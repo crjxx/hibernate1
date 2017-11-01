@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+	<hibernate-configuration>
+		<session-factory>
+			<!-- 数据库的连接驱动类 -->
+			<property name="hibernate.connection.driver_class">
+				com.mysql.jdbc.Driver
+			</property>
+			<property name="hibernate.connection.url">
+				jdbc:mysql:///tt
+			</property>
+			<property name="hibernate.connection.username">root</property>
+			<property name="hibernate.connection.password">root</property>
+			
+			<!-- hibernate的方言 -->
+			<property name="hibernate.dialect">
+				org.hibernate.dialect.MySQLDialect
+			</property>
+			<!-- hbm to ddl -->
+			<!-- <property name="hbm2ddl.auto">create</property>  --> 
+			<!-- 每次执行都把表删掉          慎用! -->
+			<!-- <property name="hbm2ddl.auto">create-drop</property> -->
+			<!-- 数据库中没有这张表,就创建这张表, 如果有,但是表结构和配置文件不一样,修改表结构 -->
+			  <property name="hbm2ddl.auto">update</property> 
+			<!-- 使用原有的表和配置文件进行比对,校验文件如果不一样抛错 -->
+			  <property name="hbm2ddl.auto">validate</property>
+			
+			<!-- 可选配置 -->
+			<!-- 打印sql语句 -->
+			<property name="hibernate.show_sql">
+				true
+			</property>
+			<!-- 格式化sql语句 -->
+			<property name="hibernate.format_sql">
+				true
+			</property>
+			<!-- c3p0的配置，使用c3p0的时候需要导入相应的jar包 -->			
+			<property name="connection.driver_class">
+				org.hibernate.connection.C3P0ConnectionProvider
+			</property>
+			<property name="c3p0.max_size">20</property>
+			<property name="c3p0.min_size">5</property>
+			<property name="c3p0.timeout">100</property>
+			<property name="c3p0.idle_test_period">3000</property>
+			
+			<mapping resource="com/kaikeba/entity/User.hbm.xml"/>
+			<mapping resource="com/kaikeba/entity/Book.hbm.xml" />
+			<mapping resource="com/kaikeba/entity/Category.hbm.xml" />
+
+		</session-factory>		
+	</hibernate-configuration>
+	
+
+

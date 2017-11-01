@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+		<class name="com.kaikeba.entity.Category" table="category">
+			<id name="cid" column="cid">
+				<generator class="uuid"></generator>	
+			</id>
+			<property name="cname" column="cname" type="string" ></property>
+			<!-- 增加管理配置 -->
+			<!-- 这里的set标签对应对象之中的set集合而言的 -->
+			<set name="books" cascade="save-update,delete">
+			<!-- 表示的一对多的那一方的外键一列的名字 -->
+				<key column="cid"></key>
+				<!-- class表示的是set集合中装载的类的全类名 -->
+				<one-to-many class="com.kaikeba.entity.Book"/>
+			</set>
+		</class>
+	</hibernate-mapping>
+
+
+
+

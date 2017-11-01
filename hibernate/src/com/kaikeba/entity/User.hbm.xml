@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping>
+		<!-- 建立class与table之间映射关系 -->
+		<!-- name代表那一个类,table代表哪一个表 -->
+		<class name="com.kaikeba.entity.User" table="users">
+			<!--建立每一个属性和表的每一列的关系  -->
+			<!--name表示属性名, column表示列名  -->
+			<id name="uuid" column="uuid" >
+				<generator class="uuid"></generator>
+			</id>
+			<!-- type表示数据类型,可以使用hibernate对应string的类型 -->
+			<property name="username" column="username" type="string"></property>
+			<property name="userpass" column="userpass" type="string"></property>
+		</class>
+	</hibernate-mapping>
+	
+	

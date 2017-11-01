@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+		<class name="com.kaikeba.entity.Book" table="book">
+			<id name="bid" column="bid">
+				<generator class="uuid"></generator>
+			</id>
+			<property name="bname" column="bname" type="string"></property>
+			<!-- 
+				在多个的一方增加many-to-one这个标签
+				name表示这个标签属于哪一个属性
+				colum表示这个属性对应数据库中的那一列
+				class表示属性属于什么数据类型,全类名
+			 -->
+			 <many-to-one name="category" column="cid" class="com.kaikeba.entity.Category" cascade="save-update" ></many-to-one>
+		</class>
+	</hibernate-mapping>
+
+
+
